@@ -1,8 +1,8 @@
-# jsongine
+# JsonGine
 Extended JSON (JavaScript Object Notation)
 
-The project aims to replace properties, xml, json definition as configuration files
-It extends JSON by using comments, variable names and constant expressions
+JsonGine extends JSON by using comments, variable names and constant expressions
+The project aims to replace properties-, xml- and json-definition as configuration files
 
 Example jsongine:
 
