@@ -1,0 +1,26 @@
+Lexical entities: IDENT, NUMBER, STRING, PROPERTY, COMMENT_EOF, COMMENT_INLINE, WS
+grammar:
+    start_def: 'jsongine' '(' 'version' '=' NUMBER (',' prop)* ')' value
+    prop: dotted_name '=' constant 
+    dotted_name: IDENT ('.' IDENT)*
+    constant: NUMBER | STRING | plugin_call
+    
+    value:   object | array | expr | 'true' | 'false' | 'null' 
+    object: '{' [ member (',' member)* ] '}' 
+    member: ( STRING | IDENT ) ':' value
+    array:  '[' [ val_expr (',' val_expr)* ] ']'
+    
+    expr: val_expr | plugin_call
+    val_expr: num_expr | string_expr
+    string_expr: STRING ( '+' STRING )*
+    num_expr: xor_expr ('|' xor_expr)*
+    xor_expr: and_expr ('^' and_expr)*
+    and_expr: shift_expr ('&' shift_expr)*
+    shift_expr: arith_expr (('<<'|'>>') arith_expr)*
+    arith_expr: term (('+'|'-') term)*
+    term: factor (('*'|'/'|'%') factor)*
+    factor: ['+'|'-'] NUMBER | 
+            '(' num_expr ')'
+    
+    plugin_call: dotted_name '(' [ val_expr ( ',' val_expr )* ] ')'
+    

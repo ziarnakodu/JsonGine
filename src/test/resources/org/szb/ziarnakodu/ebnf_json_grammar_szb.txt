@@ -1,0 +1,88 @@
+Lexical elements: IDENT, STRING, NUMBER, COMMENT_NL, COMMENT_INLINE, WS
+
+
+json: value
+
+value: 
+   object
+   array
+   STRING
+   NUMBER
+   "true"
+   "false"
+   "null"
+
+object: '{' [ member (',' member)* ] '}'
+
+member: STRING | IDENT ':' value
+
+array:  '[' [ value (',' value)* ] ']'
+
+###################### lexical #####################################
+string
+    '"' characters '"'
+    
+characters
+    ""
+    character characters
+    
+character
+    '0020' . '10FFFF' - '"' - '\'
+    '\' escape
+    
+escape
+    '"' # quotation mark
+    '\' # reverse solidius
+    '/' # solidius
+    'b' # backspace
+    'f' # formfeed
+    'n' # line feed
+    'r' # carriage return
+    't' # horizontal tab
+    'u' hex hex hex hex
+
+hex
+    digit
+    'A' . 'F'
+    'a' . 'f'
+
+number
+    integer fraction exponent
+
+integer
+    digit
+    onenine digits
+    '-' digit
+    '-' onenine digits
+
+digits
+    digit
+    digit digits
+
+digit
+    '0'
+    onenine
+
+onenine
+    '1' . '9'
+
+fraction
+    ""
+    '.' digits
+
+exponent
+    ""
+    'E' sign digits
+    'e' sign digits
+
+sign
+    ""
+    '+'
+    '-'
+
+ws
+    ""
+    '0020' ws
+    '000A' ws
+    '000D' ws
+    '0009' ws

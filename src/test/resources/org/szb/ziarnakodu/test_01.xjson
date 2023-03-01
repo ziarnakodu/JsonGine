@@ -1,0 +1,21 @@
+/*
+2021.03.24
+*/
+xJson(version 1.0){
+     // properties
+     pi      = 3.14,
+     e       = 1.2,
+     baseUrl       = "https://mydomain.com",
+     org.szb.ziarnakodu.AA = 12,
+     NL            = "\n",
+     CRLF          = "\r\n"
+}
+// data  
+name   : "myvalue01", //comment
+id     : 1234,
+nrList : [12, 5, /*13,*/ 4, ]
+myMap: {
+           "ky01" : "value01",
+           "ky02" : "value02",
+           "ky02" : ""+(pi*2) //expression
+       }

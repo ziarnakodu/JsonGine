@@ -1,0 +1,23 @@
+jsongine(version = 1.0,
+  // properties
+  pi      = 3.14,
+  baseUrl       = "https://mydomain.com/",
+  org.szb.ziarnakodu.AA = 12,
+  CRLF          = "\r\n",
+  radix         = 100/*cm*/
+)
+// data for class MyClass
+{
+  name   : "myvalue01", //comment
+  id     : 1234,
+  nrList : [12, 5, /*13,*/ 4 ],
+  myMap: {
+           "home"    : #baseUrl + "home"    + #CRLF,//result: "https://mydomain.com/home\r\n"
+           "contact" : #baseUrl + "contact" + #CRLF //result: "https://mydomain.com/contact\r\n"
+         },
+  circumference : 2*#pi*#radix, //expression
+  conn : {
+           user     : org.szb.ziarnakodu.plugins.Crypto.decryptAES("MY_USER"),
+           password : org.szb.ziarnakodu.plugins.Crypto.decryptAES("MY_PASSW")
+         }
+}
